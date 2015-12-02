@@ -9,6 +9,7 @@ Very boring configs for:
 
 # How it looks
 ![vim](example_images/vim.png?raw=true)
+![vim2](example_images/vim2.png?raw=true)
 ![zsh](example_images/zsh.png?raw=true)
 
 You can install all configs:
