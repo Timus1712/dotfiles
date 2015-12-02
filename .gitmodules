@@ -1,0 +1,3 @@
+[submodule "awesome/awesome/alttab"]
+	path = awesome/awesome/alttab
+	url = https://github.com/jorenheit/awesome_alttab.git
