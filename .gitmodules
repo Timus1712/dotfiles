@@ -1,3 +1,12 @@
 [submodule "awesome/awesome/alttab"]
 	path = awesome/awesome/alttab
 	url = https://github.com/jorenheit/awesome_alttab.git
+[submodule "awesome/awesome/blingbling"]
+	path = awesome/awesome/blingbling
+	url = git://github.com/cedlemo/blingbling.git
+[submodule "awesome/awesome/vicious"]
+	path = awesome/awesome/vicious
+	url = http://git.sysphere.org/vicious
+[submodule "st/st"]
+	path = st/st
+	url = http://git.suckless.org/st
