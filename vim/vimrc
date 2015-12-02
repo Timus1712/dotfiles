@@ -1,0 +1,217 @@
+"version 7.0
+set nocompatible
+
+" Required:
+"filetype plugin indent on
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+vmap [% [%m'gv``
+vmap ]% ]%m'gv``
+vmap a% [%v]%
+nmap gx <Plug>NetrwBrowseX
+vmap y y:silent '<,'> w !xclip
+nmap yy yy:silent .w !xclip
+noremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+let &cpo=s:cpo_save
+unlet s:cpo_save
+syntax on
+"set paste
+set autoindent
+set backspace=indent,eol,start
+set expandtab
+set fileencodings=ucs-bom,utf-8,latin1
+set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block,a:blinkon0
+set helplang=en
+set hidden
+set history=1000
+set hlsearch
+set laststatus=2
+set scrolloff=3
+set shiftwidth=4
+set smartindent
+set smarttab
+set noexpandtab
+set showmatch
+set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+set noswapfile
+set tabstop=4
+set wildmenu
+set wildmode=list:longest
+set nu
+set incsearch
+set splitright
+set splitbelow
+hi Normal guibg=darkgrey ctermfg=lightgrey ctermbg=darkgrey
+
+set background=dark
+colorscheme wombat256my
+"colorscheme molokai
+"colorscheme monokai
+"colorscheme solarized
+"colorscheme peachpuff
+"colorscheme yule
+
+nmap <F2> :w<CR>
+imap <F2> <ESC>:w<CR>
+vmap <F2> <ESC>:w<CR>
+
+nmap <F9> <F2>:!g++ --std=c++11 %<CR>
+imap <F9> <F2>:!g++ --std=c++11 %<CR>
+vmap <F9> <F2>:!g++ --std=c++11 %<CR>
+
+"nnoremap <C-S-tab> :tabprevious<CR>
+"nnoremap <C-tab>   :tabnext
+"nnoremap <C-t>     :tabnew<CR>
+"inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+"inoremap <C-tab>   <Esc>:tabnext<CR>i
+"inoremap <C-t>     <Esc>:tabnew<CR>
+
+"map <C--> gt
+"map <C-+> gT
+"map <C-1> 1gt
+"map <C-2> 2gt
+"map <C-3> 3gt
+"map <C-4> 4gt
+"map <C-5> 5gt
+"map <C-6> 6gt
+"map <C-7> 7gt
+"map <C-8> 8gt
+"map <C-9> 9gt
+"map <C-0> :tablast<CR>
+
+map <F12> :NERDTreeToggle<CR>
+
+nmap <CTRL-PAGEUP> gT
+nmap <CTRL-PAGEDOWN> gt
+
+au FileType python nmap <F5> <F2>:!python %<CR>
+au FileType python imap <F5> <F2>:!python %<CR>
+au FileType python vmap <F5> <F2>:!python %<CR>
+
+au FileType cpp nmap <F5> :!./a.out<CR>
+au FileType cpp imap <F5> <ESC><F5>
+au FileType cpp vmap <F5> <ESC><F5>
+
+au FileType lisp nmap <F5> :!clisp %<CR>
+au FileType lisp imap <F5> <ESC><F5>
+au FileType lisp vmap <F5> <ESC><F5>
+
+" F11 to toggle paste mode
+map <F11> :set invpaste<CR>
+set pastetoggle=<F11>
+
+"nmap <F4> <F2>:q!<CR>
+"imap <F4> <ESC><F4>
+"vmap <F4> <ESC><F4>
+
+map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+map <F3> <C-]>
+imap <F3> <ESC><F3>
+vmap <F3> <ESC><F3>
+
+set clipboard=unnamedplus
+
+set wrap
+set textwidth=100
+set formatoptions=qrn1
+"set colorcolumn=105
+let &colorcolumn=join(range(100,999),",")
+
+set cursorline
+set ttyfast
+set ruler
+set relativenumber
+set undofile
+
+nnoremap ; :
+
+"set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+"set laststatus=2
+"
+" " Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "bubblegum"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_quiet_messages = { "type": "style"}
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_cursor_column = 0
+let g:syntastic_enable_highlighting = 0
+
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
