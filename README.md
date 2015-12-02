@@ -8,11 +8,11 @@ Very boring configs for:
 
 You can install all configs:
 ```
-git clone https://github.com/Timus1712/dotfiles.git
+git clone --recursive https://github.com/Timus1712/dotfiles.git
 make
 ```
 Or specified config:
 ```
-git clone https://github.com/Timus1712/dotfiles.git
+git clone --recursive https://github.com/Timus1712/dotfiles.git
 make vim
-```  
+```
