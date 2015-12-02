@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char font[] = "DejaVu Sans Mono for Powerline:pixelsize=14:antialias=true:autohint=true";
-static int borderpx = 2;
+static int borderpx = 0;
 static int histsize = 2000;
 
 /*
@@ -64,40 +64,129 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-static char termname[] = "st-256color";
+//static char termname[] = "st-256color";
+static char termname[] = "xterm-256color";
 
-static unsigned int tabspaces = 8;
+static unsigned int tabspaces = 4;
+
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* solarized dark */
-	"#073642",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#eee8d5",  /*  7: white    */
-	"#002b36",  /*  8: brblack  */
-	"#cb4b16",  /*  9: brred    */
-	"#586e75",  /* 10: brgreen  */
-	"#657b83",  /* 11: bryellow */
-	"#839496",  /* 12: brblue   */
-	"#6c71c4",  /* 13: brmagenta*/
-	"#93a1a1",  /* 14: brcyan   */
-	"#fdf6e3",  /* 15: brwhite  */
+
+  /* 8 normal colors */
+  [0] = "#101010", /* black   */
+  [1] = "#960050", /* red     */
+  [2] = "#66aa11", /* green   */
+  [3] = "#c47f2c", /* yellow  */
+  [4] = "#30309b", /* blue    */
+  [5] = "#7e40a5", /* magenta */
+  [6] = "#3579a8", /* cyan    */
+  [7] = "#9999aa", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#303030", /* black   */
+  [9]  = "#ff0090", /* red     */
+  [10] = "#80ff00", /* green   */
+  [11] = "#ffba68", /* yellow  */
+  [12] = "#5f5fee", /* blue    */
+  [13] = "#bb88dd", /* magenta */
+  [14] = "#4eb4fa", /* cyan    */
+  [15] = "#d0d0d0", /* white   */
+
+  /* special colors */
+  [256] = "#101010", /* background */
+  [257] = "#d0d0d0", /* foreground */
 };
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor
+ */
+static unsigned int defaultfg = 257;
+static unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
+
+/*
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
+
+
+
+
+/* Terminal colors (16 first used in escape sequence) */
+//static const char *colorname[] = {
+	/* monokai */
+ //   "#1b1d1e",
+ //   "#ff0044",
+ //   "#82b414",
+ //   "#fd971f",
+ //   "#266c98",
+ //   "#ac0cb1",
+ //   "#ae81ff",
+ //   "#cccccc",
+ //   "#808080",
+ //   "#f92672",
+ //   "#a6e22e",
+ //   "#e6db74",
+  //  "#7070f0",
+ //   "#d63ae1",
+ //   "#66d9ef",
+ //   "#f8f8f2",
+//"#272822", "#f92672", "#a6e22e", "#f4bf75", "#66d9ef", "#ae81ff", "#a1efe4", "#f8f8f2", "#75715e", "#f92672", "#a6e22e", "#f4bf75", "#66d9ef", "#ae81ff", "#a1efe4", "#f9f8f5"
+//	"#000000",  /*  0: black    */
+//	"#e01010",  /*  1: red      */
+//	"#20ad20",  /*  2: green    */
+//	"#d4c24f",  /*  3: yellow   */
+//	"#231bb8",  /*  4: blue     */
+//	"#9c3885",  /*  5: magenta  */
+//	"#1dbdb8",  /*  6: cyan     */
+//	"#fefefe",  /*  7: white    */
+//	"#6a6a6a",  /*  8: brblack  */
+//	"#e83a3d",  /*  9: brred    */
+//	"#35e956",  /* 10: brgreen  */
+//	"#ffff2f",  /* 11: bryellow */
+//	"#3a53f0",  /* 12: brblue   */
+//	"#e628ba",  /* 13: brmagenta*/
+//	"#1cf5f5",  /* 14: brcyan   */
+//	"#ffffff",  /* 15: brwhite  */
+
+//	[255] = 0,
+//	"#212121",  /* 16: background */
+//	"#f8f8f0"
+
+
+	/* solarized dark */
+//	"#073642",  /*  0: black    */
+//	"#dc322f",  /*  1: red      */
+//	"#859900",  /*  2: green    */
+//	"#b58900",  /*  3: yellow   */
+//	"#268bd2",  /*  4: blue     */
+//	"#d33682",  /*  5: magenta  */
+//	"#2aa198",  /*  6: cyan     */
+//	"#eee8d5",  /*  7: white    */
+//	"#002b36",  /*  8: brblack  */
+//	"#cb4b16",  /*  9: brred    */
+//	"#586e75",  /* 10: brgreen  */
+//	"#657b83",  /* 11: bryellow */
+//	"#839496",  /* 12: brblue   */
+//	"#6c71c4",  /* 13: brmagenta*/
+//	"#93a1a1",  /* 14: brcyan   */
+//	"#fdf6e3",  /* 15: brwhite  */
+//};
 
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-static unsigned int defaultfg = 12;
-static unsigned int defaultbg = 8;
-static unsigned int defaultcs = 14;
-static unsigned int defaultrcs = 257;
+//static unsigned int defaultfg = 7;
+//static unsigned int defaultbg = 0;
+//static unsigned int defaultcs = 7;
+static unsigned int defaultrcs = 15;
 
 /*
  * Default shape of cursor
@@ -106,7 +195,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -120,8 +209,8 @@ static unsigned int mousebg = 0;
  * will reverse too. Another logic would only make the simple feature too
  * complex.
  */
-static unsigned int defaultitalic = 11;
-static unsigned int defaultunderline = 7;
+//static unsigned int defaultitalic = 11;
+//static unsigned int defaultunderline = 7;
 
 /*
  * Internal mouse shortcuts.
