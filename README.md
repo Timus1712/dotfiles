@@ -5,6 +5,7 @@ Very boring configs for:
 * vim
 * awesome
 * git
+* st (simple terminal)
 
 You can install all configs:
 ```

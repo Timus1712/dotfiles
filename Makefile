@@ -1,6 +1,6 @@
-.PHONY: vim zsh git awesome
+.PHONY: vim zsh git awesome st
 
-all: vim zsh git awesome
+all: vim zsh git awesome st
 
 vim:
 	cd vim && make
@@ -13,4 +13,7 @@ git:
 
 awesome:
 	cd awesome && make
+
+st:
+	cd st && make
 
