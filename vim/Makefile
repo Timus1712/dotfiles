@@ -4,4 +4,4 @@ install:
 	ln -s `pwd`/vim ~/.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
-	cd ~/.vim/bundle/YouCompleteMe && ./setup.py
+	cd ~/.vim/bundle/YouCompleteMe && ./install.py
