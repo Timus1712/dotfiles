@@ -32,6 +32,7 @@
 
   # branch
   b = branch -v                     # branch (verbose)
+  sup = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 
   # commit
   c = commit -m                     # commit with message
