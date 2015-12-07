@@ -23,6 +23,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'majutsushi/tagbar'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -114,6 +116,11 @@ vmap <F9> <F2>:!g++ --std=c++11 %<CR>
 "map <C-8> 8gt
 "map <C-9> 9gt
 "map <C-0> :tablast<CR>
+
+
+"==========================================================
+" TagBar Settings
+"==========================================================
 
 map <F12> :NERDTreeToggle<CR>
 
