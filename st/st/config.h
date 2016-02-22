@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "DejaVu Sans Mono for Powerline:pixelsize=14:antialias=true:autohint=true";
+static char font[] = "DejaVu Sans Mono for Powerline:pixelsize=17:antialias=true:autohint=true";
 static int borderpx = 0;
 static int histsize = 2000;
 

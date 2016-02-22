@@ -99,6 +99,7 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
+beautiful.wallpaper = "/home/timus/Downloads/99px_ru_wallpaper_102986_devushka__angel_i_paren__demon.jpg"
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
