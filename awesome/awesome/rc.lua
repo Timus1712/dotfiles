@@ -685,6 +685,7 @@ awful.util.spawn_with_shell("/usr/bin/xset b off")
 
 run_once("xscreensaver -nosplash")
 run_once("setxkbmap -layout us,ru")
+run_once("owncloud")
 
 -- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 -- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)

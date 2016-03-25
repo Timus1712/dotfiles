@@ -11,6 +11,7 @@
 # ----------------------------------------------------------------------------------------------
 # Windows image file caches
 Thumbs.db
+.vscode/
 
 # Folder config file
 Desktop.ini

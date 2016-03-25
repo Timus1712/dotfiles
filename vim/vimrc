@@ -1,5 +1,5 @@
 "version 7.0
-set nocompatible
+
 
 " Required:
 "filetype plugin indent on
@@ -18,10 +18,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'groenewege/vim-less'
+Plugin 'sclarki/neonwave.vim'
+Plugin 'nanotech/jellybeans.vim'
+"Plugin 'sentientmachine/Pretty-Vim-Python'
 
 Plugin 'majutsushi/tagbar'
 
@@ -82,7 +90,8 @@ set splitbelow
 hi Normal guibg=darkgrey ctermfg=lightgrey ctermbg=darkgrey
 
 set background=dark
-colorscheme wombat256my
+colorscheme jellybeans
+"colorscheme wombat256my
 "colorscheme molokai
 "colorscheme monokai
 "colorscheme solarized
@@ -135,10 +144,6 @@ au FileType cpp nmap <F5> :!./a.out<CR>
 au FileType cpp imap <F5> <ESC><F5>
 au FileType cpp vmap <F5> <ESC><F5>
 
-au FileType lisp nmap <F5> :!clisp %<CR>
-au FileType lisp imap <F5> <ESC><F5>
-au FileType lisp vmap <F5> <ESC><F5>
-
 " F11 to toggle paste mode
 map <F11> :set invpaste<CR>
 set pastetoggle=<F11>
@@ -153,7 +158,8 @@ map <F3> <C-]>
 imap <F3> <ESC><F3>
 vmap <F3> <ESC><F3>
 
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
+"set clipboard=unnamedplus
 
 set wrap
 set textwidth=100
@@ -192,18 +198,29 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_quiet_messages = { "type": "style"}
+"let g:syntastic_quiet_messages = { "type": "style"}
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_cursor_column = 0
-let g:syntastic_enable_highlighting = 0
+let g:syntastic_enable_highlighting = 1
+
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 4
+let g:indent_guides_start_level = 1
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=234
+
+
 
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
