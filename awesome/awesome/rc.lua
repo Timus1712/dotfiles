@@ -99,7 +99,7 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-beautiful.wallpaper = "/home/timus/Downloads/99px_ru_wallpaper_102986_devushka__angel_i_paren__demon.jpg"
+beautiful.wallpaper = config_dir .. "wallpapers/angel.jpg"
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
@@ -167,7 +167,6 @@ vicious.register(neticon, vicious.widgets.wifi, function(widget, args)
         neticon:set_image(beautiful.netlow)
     end
 end, 120, 'wlp3s0')
-
 
 --{{---| File Size widget |-----
 fswidget = wibox.widget.textbox()
@@ -242,17 +241,6 @@ kbdcfg.switch = function ()
   kbdcfg.widget:set_markup(kbdcfg.render(t[3]))
   os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
 end
-
-
---alttab.settings.preview_box = true                 -- display preview-box
---alttab.settings.preview_box_bg = "#ddddddaa"       -- background color
---alttab.settings.preview_box_border = "#22222200"   -- border-color
---alttab.settings.preview_box_fps = 30               -- refresh framerate
---alttab.settings.preview_box_delay = 150            -- delay in ms
-
---alttab.settings.client_opacity = false             -- set opacity for unselected clients
---alttab.settings.client_opacity_value = 0.5         -- alpha-value
---alttab.settings.client_opacity_delay = 150         -- delay in ms
 
 
  -- Mouse bindings
@@ -390,8 +378,8 @@ globalkeys = awful.util.table.join(
 
 -- Alt + Left Shift switches the current keyboard layout
 awful.key({ "Mod1" }, "Shift_L", function () kbdcfg.switch() end),
--- {{ Opens Chromium }} --
 
+-- {{ Opens Chromium }} --
 awful.key({ "Control", "Shift"}, "c", function() awful.util.spawn("google-chrome") end),
 awful.key({ "Control", "Shift"}, "n", function() awful.util.spawn("google-chrome -incognito") end),
 
@@ -408,24 +396,11 @@ awful.key({ "Control", "Shift"}, "n", function() awful.util.spawn("google-chrome
 -- awful.key({ "Control", "Shift"}, "b", function() awful.util.spawn("/opt/sublime-text/sublime_text") end),
 
 
-awful.key({ "Mod1",           }, "Tab",
-       function ()
-           alttab.switch(1, "Alt_L", "Tab", "ISO_Left_Tab")
-       end
-),
-
-awful.key({ "Mod1", "Shift"   }, "Tab",
-       function ()
-           alttab.switch(-1, "Alt_L", "Tab", "ISO_Left_Tab")
-       end
-),
-
-
 -- {{ Volume Control }} --
 
-awful.key({     }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+", false) end),
-awful.key({     }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%-", false) end),
-awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
+awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+", false) end),
+awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%-", false) end),
+awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
 
 -- {{ Brightness Control }} --
 awful.key({ }, "XF86MonBrightnessDown", function ()
@@ -435,9 +410,8 @@ awful.key({ }, "XF86MonBrightnessUp", function ()
 
 --awful.key({ }, "XF86ScreenSaver", function () awful.util.spawn("xscreensaver-command -lock") end),
 awful.key({ }, "XF86ScreenSaver", function () awful.util.spawn("xflock4") end),
-awful.key({ }, "Print", function()
-        awful.util.spawn("capscr",false) end),
-
+awful.key({ }, "#127", function () awful.util.spawn("xscreensaver-command -lock") end),
+awful.key({ }, "Print", function() awful.util.spawn("capscr", false) end),
 
 -- {{ Vim-like controls:
 
@@ -580,6 +554,7 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
+					 size_hints_honor = false,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
