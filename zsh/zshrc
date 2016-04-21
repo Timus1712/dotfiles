@@ -97,6 +97,8 @@ alias ctlstatus="sudo systemctl status"
 alias ctlrestart="sudo systemctl restart"
 alias ctlstop="sudo systemctl stop"
 
+alias subl="/home/timus/sublime_text_3/sublime_text"
+
 alias g++-debug="g++ -Wall -Wextra -pedantic -std=c++11 -Og -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=undefined -fno-sanitize-recover -fstack-protector"
 
 #if [[ -r /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then

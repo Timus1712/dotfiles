@@ -7,6 +7,9 @@
 .Spotlight-V100
 .Trashes
 
+*.pyc
+__pycache__/
+
 # Windows   taken from: https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
 # ----------------------------------------------------------------------------------------------
 # Windows image file caches

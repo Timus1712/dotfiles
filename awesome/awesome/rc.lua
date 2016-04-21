@@ -40,6 +40,18 @@ do
 end
 -- }}}
 
+-- {{ Function to ensure that certain programs only have one
+-- instance of themselves when i restart awesome
+
+function run_once(cmd)
+        findme = cmd
+        firstspace = cmd:find(" ")
+        if firstspace then
+                findme = cmd:sub(0, firstspace-1)
+        end
+        awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 
@@ -52,7 +64,7 @@ themes_dir = (config_dir .. "/powerarrowf")
 beautiful.init(themes_dir .. "/theme.lua")
 
 -- This is used later as the default terminal, browser and editor to run.
-terminal = "st"
+terminal = "roxterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "google-chrome"
@@ -409,8 +421,14 @@ awful.key({ }, "XF86MonBrightnessUp", function ()
     awful.util.spawn("xbacklight -inc 10") end),
 
 --awful.key({ }, "XF86ScreenSaver", function () awful.util.spawn("xscreensaver-command -lock") end),
-awful.key({ }, "XF86ScreenSaver", function () awful.util.spawn("xflock4") end),
-awful.key({ }, "#127", function () awful.util.spawn("xscreensaver-command -lock") end),
+awful.key({ }, "XF86ScreenSaver", function ()
+	if kbdcfg.current == 2 then kbdcfg.switch() end
+	awful.util.spawn("xscreensaver-command -lock")
+end),
+awful.key({ }, "#127", function ()
+	if kbdcfg.current == 2 then kbdcfg.switch() end
+	awful.util.spawn("xscreensaver-command -lock")
+end),
 awful.key({ }, "Print", function() awful.util.spawn("capscr", false) end),
 
 -- {{ Vim-like controls:
@@ -637,20 +655,8 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
--- {{ Function to ensure that certain programs only have one
--- instance of themselves when i restart awesome
-
-function run_once(cmd)
-        findme = cmd
-        firstspace = cmd:find(" ")
-        if firstspace then
-                findme = cmd:sub(0, firstspace-1)
-        end
-        awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
-end
-
 -- {{ I need redshift to save my eyes }} -
--- run_once("redshift -l 49.26:-123.23")
+run_once("redshift -l 55.75:37.61")
 -- awful.util.spawn_with_shell("xmodmap ~/.speedswapper")
 
 -- {{ Turns off the terminal bell }} --
