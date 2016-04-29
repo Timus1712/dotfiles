@@ -3,6 +3,7 @@
 [user]
     name = Timofey Yushchenko
     email = tauemail@gmail.com
+	signingke = 590C3E2C
 [color]
   ui = true
 [color "branch"]
