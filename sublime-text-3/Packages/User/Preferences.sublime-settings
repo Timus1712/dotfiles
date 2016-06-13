@@ -1,7 +1,7 @@
 {
 	"auto_match_enabled": false,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Material-Theme-Darker-OceanicNext (SL).tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 	"dictionary": "Packages/russian_english.dic",
 	"enable_tab_scrolling": false,
 	"file_exclude_patterns":
