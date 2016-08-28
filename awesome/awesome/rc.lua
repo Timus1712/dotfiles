@@ -122,10 +122,17 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9}, s, layouts[1])
+if screen.count() == 2 then
+  tags[1] = awful.tag({"WEB"}, 1, layouts[1])
+  tags[2] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9}, 2, layouts[1])
 end
+if screen.count() == 1 then
+  tags[1] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9}, 1, layouts[1])
+end
+--for s = 1, screen.count() do
+    -- Each screen has its own tag table.
+--    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9}, s, layouts[1])
+--end
 -- }}}
 
 -- {{{ Menu
@@ -386,6 +393,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+
+    awful.key({ modkey, "Control" }, "Left",   awful.screen.focus_relative( 1)),
+    awful.key({ modkey, "Control" }, "Right",  awful.screen.focus_relative(-1)),
+
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
 -- Alt + Left Shift switches the current keyboard layout
