@@ -1,0 +1,15 @@
+[roxterm profile]
+font=Roboto Mono for Powerline 11
+maximise=1
+colour_scheme=coffee_bear
+saturation=1.000000
+allow_bold=1
+hide_mouse=1
+cursor_shape=1
+cursor_blink_mode=1
+tab_pos=4
+always_show_tabs=0
+hide_menubar=1
+show_add_tab_btn=0
+scrollbar_pos=0
+scroll_on_keystroke=1

@@ -1,6 +1,6 @@
-.PHONY: vim zsh git awesome st
+.PHONY: vim zsh git awesome st sublime-text-3 roxterm
 
-all: vim zsh git awesome st sublime-text-3
+all: vim zsh git awesome st sublime-text-3 roxterm
 
 vim:
 	cd vim && make
@@ -20,3 +20,5 @@ st:
 sublime-text-3:
 	cd sublime-text-3 && make
 
+roxterm:
+	cd roxterm && make
