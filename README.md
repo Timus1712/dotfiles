@@ -6,6 +6,7 @@ Very boring configs for:
 * awesome
 * git
 * st (simple terminal)
+* roxterm
 
 # How it looks
 ![vim](example_images/vim.png?raw=true)
